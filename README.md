@@ -46,9 +46,9 @@ Built and verified 8-bit version: A[7:0], B[7:0] buses, carry chain, shared F1 F
 |  1  |  1  |  1  |  1  |  0  |        0        |       1       | ADD+Cin=1           |
 |  1  |  1  |  1  |  1  |  1  |        1        |       1       | ADD+Cin=1           |
 
-
-4th line output 1 cout 1.  
-8th line output 1 cout 1.  
-9th line output 0 cout 0.  
-11th line output 0 cout 0.  
-12th line output 0 cout 1.
+Errors at line;
+4th output 1 cout 1.  
+8th output 1 cout 1.  
+9th output 0 cout 0.  
+11th output 0 cout 0.  
+12th output 0 cout 1.
