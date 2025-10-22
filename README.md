@@ -1,5 +1,41 @@
+---
+## 🧾 Daily Log — October 22, 2025
+---
+Rebuild the ALU from scratch after design issues in the previous version.
+---
+Progress Summary:
+Designed and implemented a 1-bit full adder using two half adders and an OR gate.
+Verified the adder against the full truth table all outputs matched perfectly.
+Built a 2→4 decoder using F1 and F0 inputs with NOT and AND gates to generate operation select lines.
+Connected the decoder outputs to enable logic and arithmetic units.  
+Implemented the logic unit supporting:
 
-## Daily Log — October 22 2025
+00 → X AND Y  
+01 → X OR Y  
+10 → NOT X  
+11 → ADD X and Y (+ Cin)  
+
+Constructed and tested the full ALU with all 16 test cases (logic + arithmetic).
+
+All tests passed 1-to-1 correct Result and Cout for every operation.
+
+Outcome:
+The ALU is fully functional and validated. Decoder, logic unit, and full adder all operate correctly together.  
+   | Test # | F1F0 (Opcode) |  X  |  Y  | Cin | Expected Result | Cout | Status |
+| :----: | :-----------: | :-: | :-: | :-: | :-------------- | :--: | :----: |
+|    1   |       00      |  0  |  0  |  0  | 0               |   0  |    ✅   |
+|    2   |       00      |  1  |  1  |  0  | 1               |   0  |    ✅   |
+|    3   |       01      |  0  |  1  |  0  | 1               |   0  |    ✅   |
+|    4   |       10      |  0  |  –  |  0  | 1               |   0  |    ✅   |
+|    5   |       10      |  1  |  –  |  0  | 0               |   0  |    ✅   |
+|    6   |       11      |  0  |  0  |  0  | 0               |   0  |    ✅   |
+|    7   |       11      |  0  |  1  |  1  | 0               |   1  |    ✅   |
+|    8   |       11      |  1  |  1  |  1  | 1               |   1  |    ✅   |
+---
+
+
+
+## 🧾 Daily Log — October 21 2025
 
 ---
 8-bit CPU Mainboard / ALU Module Testing
