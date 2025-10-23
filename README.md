@@ -1,4 +1,39 @@
 ---
+## 🧾 Daily Log — October 23, 2025
+---
+Scale the 1-bit ALU into an 8-bit ripple-carry ALU, verify logic and arithmetic correctness, and ensure proper carry propagation across all slices.
+---
+
+🔧 Development Process
+Step	Task	Description / Result
+- 	Built 8× 1-bit ALU slices	Duplicated the verified 1-bit ALU circuit into eight identical slices. Each slice contains its own full adder, logic gates (AND, OR, NOT), and multiplexer for result selection.
+- 	Shared decoder control	A single 2→4 decoder was connected to all slices, distributing the same opcode signals (F1, F0). This ensures that every bit performs the same operation simultaneously.
+- 	Carry-chain configuration	Connected Cout → Cin sequentially from the least-significant bit (LSB) to the most-significant bit (MSB). The external carry-in was grounded (Cin₀ = 0), and the final carry-out was observed from the MSB slice.
+- 	Direction test	Initially, carry propagated in the wrong direction (MSB → LSB). Rewired the chain to flow LSB → MSB. Verified correct bit ordering by observing “domino zero” ripple effect with Y = 11111111.
+- 	Logic verification	Confirmed that logic operations ignore carry and produce consistent results across all bits.
+- 	Arithmetic verification	Confirmed correct addition and carry-out generation across all 8 bits. Ripple timing and sum bits were validated.
+- 	Final testing	Performed full test suite (AND, OR, NOT, ADD). All results matched the expected truth tables.  
+ 
+  |  #  | Opcode (F1 F0) | Operation | X (A) | Y (B) | Cin | Expected Result | Cout | Pass |
+| :-: | :------------: | :-------- | :---: | :---: | :-: | :-------------: | :--: | :--: |
+|  1  |       00       | AND       |   00  |   00  |  0  |        00       |   0  |   ✅  |
+|  2  |       00       | AND       |   F0  |   0F  |  0  |        00       |   0  |   ✅  |
+|  3  |       00       | AND       |   FF  |   FF  |  0  |        FF       |   0  |   ✅  |
+|  4  |       01       | OR        |   F0  |   0F  |  0  |        FF       |   0  |   ✅  |
+|  5  |       01       | OR        |   A5  |   5A  |  0  |        FF       |   0  |   ✅  |
+|  6  |       10       | NOT X     |   00  |   —   |  0  |        FF       |   0  |   ✅  |
+|  7  |       10       | NOT X     |   FF  |   —   |  0  |        00       |   0  |   ✅  |
+|  8  |       10       | NOT X     |   A5  |   —   |  0  |        5A       |   0  |   ✅  |
+|  9  |       11       | ADD       |   00  |   00  |  0  |        00       |   0  |   ✅  |
+|  10 |       11       | ADD       |   01  |   00  |  0  |        01       |   0  |   ✅  |
+|  11 |       11       | ADD       |   0F  |   01  |  0  |        10       |   0  |   ✅  |
+|  12 |       11       | ADD       |   FF  |   01  |  0  |        00       |   1  |   ✅  |
+|  13 |       11       | ADD       |   7F  |   01  |  0  |        80       |   0  |   ✅  |
+|  14 |       11       | ADD       |   80  |   80  |  0  |        00       |   1  |   ✅  |
+|  15 |       11       | ADD       |   AA  |   55  |  0  |        FF       |   0  |   ✅  |
+|  16 |       11       | ADD       |   55  |   55  |  0  |        AA       |   0  |   ✅  |
+
+---
 ## 🧾 Daily Log — October 22, 2025
 ---
 Rebuild the ALU from scratch after design issues in the previous version.
@@ -35,8 +70,7 @@ The ALU is fully functional and validated. Decoder, logic unit, and full adder a
 
 
 
-## 🧾 Daily Log — October 21 2025
-
+## 🧾 Daily Log — October 21, 2025
 ---
 8-bit CPU Mainboard / ALU Module Testing
 ---
