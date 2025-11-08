@@ -1,5 +1,98 @@
+
+## 🧾 Daily Log - November 8, 2025
+### RAM Automatic Addressing, Decoder Control, and Flip-Flop Logic Refinement
+
+**Objective**  
+Transition the RAM module from manual switch-based addressing to an automated, Program Counter–driven address system.  
+The RAM now supports controlled writes from the ALU through coordinated decoder logic, clock gating, and write-enable control, more closely mirroring real CPU memory behavior.
+
 ---
-## 🧾 Daily Log — October 23, 2025
+
+### 🔧 Hardware Configuration Overview
+
+**Core Components**
+
+- 8×8 D-type flip-flop matrix (64 bits total → 8 bytes of RAM)
+- 8 × 1-bit ALU slices (forming an 8-bit ALU)
+- 3-to-8 binary decoder
+- 3-bit Program Counter (PC)
+- Global Write Enable (`WE`) switch
+- Global Clock (`CLK`) push button
+- AND-gate logic for gated column clocks
+
+**Signal Groups**
+
+| Signal        | Description                          | Direction                          |
+|--------------|--------------------------------------|------------------------------------|
+| `F0–F7`      | 8-bit ALU output                     | To flip-flop D inputs (bitlines)  |
+| `A0–A2`      | Address bits from Program Counter    | To decoder inputs                  |
+| `Y0–Y7`      | One-hot decoder outputs              | To gated column clock lines        |
+| `WE`         | Global write enable                  | Manual control                     |
+| `CLK`        | Global write clock pulse             | Manual control                     |
+| `Q[row][col]`| Stored RAM bits                      | To future read bus / MUX stage     |
+
+---
+
+### ⚙️ Design Changes and Fixes
+
+#### 1. Flip-Flop Logic Correction
+
+Issue: Both `Q` and `/Q` were lit when `D = 1` and `CK = 1`, indicating an invalid SR-latch condition (`S = R = 0`).
+
+Action:
+
+- Reimplemented each D latch using NAND-based gating to ensure complementary outputs:
+
+S = NAND(D, CK)
+R = NAND(NOT(D), CK)
+Result:
+-  Q and /Q are always complementary (never both 1).
+-  Eliminated illegal states and stabilized each memory cell.
+2. ALU → RAM Data Path
+   ---
+-  Each ALU slice output (F0–F7) is wired vertically to a column of flip-flops (bitline).
+-  All flip-flops in column n share Fn as their D input.
+-  A cell only stores that bit when its corresponding row/column clock (from decoder + gating) is active.
+This matches the standard memory model:
+-  Bitlines carry data.
+-  Wordlines / enable lines select which row actually latches.
+3. Decoder Integration & Write Gating
+   ---
+-  A 3-to-8 decoder is used to select which memory row/column is active at a time.
+-  Decoder inputs A0–A2 are now driven by the Program Counter instead of manual switches.
+-  Each decoder output Y[n] is gated with WE and CLK:
+Behavior:
+-  Only one Y[n] is high for any address.
+-  A write occurs only when:
+-  -  That address is selected (Y[n] = 1)
+-  -  WE = 1
+-  -  A clock pulse (CLK) is applied
+-  Prevents accidental multi-row writes and gives clean, deterministic behavior.
+4. Program Counter Integration
+   ---
+-  Implemented a 3-bit binary Program Counter.
+-  PC0, PC1, PC2 are wired directly into the decoder inputs A0–A2.
+Effect:
+-  Each clock cycle advances the active address:
+-  000 → 001 → 010 → ... → 111
+-  -  With WE enabled, sequential ALU results can be stored automatically into successive memory locations.
+-  With WE disabled, the PC can still step through addresses without modifying RAM.
+```text
+            +------------------------+
+ALU F0–F7 ->|   D0–D7 bitlines       |
+            |   8×8 Flip-Flop RAM    |--> [Future] Read MUX / Output Bus
+            +------------------------+
+
+CLK, WE ---> AND with Y0–Y7 ---> ColumnClock[0–7]
+                 ^
+                 |
+          3-to-8 Decoder <--- PC[2:0]
+```
+
+
+
+---
+## 🧾 Daily Log - October 23, 2025
 ---
 Scale the 1-bit ALU into an 8-bit ripple-carry ALU, verify logic and arithmetic correctness, and ensure proper carry propagation across all slices.
 ---
@@ -34,7 +127,7 @@ Step	Task	Description / Result
 |  16 |       11       | ADD       |   55  |   55  |  0  |        AA       |   0  |   ✅  |
 
 ---
-## 🧾 Daily Log — October 22, 2025
+## 🧾 Daily Log - October 22, 2025
 ---
 Rebuild the ALU from scratch after design issues in the previous version.
 ---
@@ -70,7 +163,7 @@ The ALU is fully functional and validated. Decoder, logic unit, and full adder a
 
 
 
-## 🧾 Daily Log — October 21, 2025
+## 🧾 Daily Log - October 21, 2025
 ---
 8-bit CPU Mainboard / ALU Module Testing
 ---
