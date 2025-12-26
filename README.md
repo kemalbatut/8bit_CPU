@@ -31,6 +31,8 @@ The RAM now supports controlled writes from the ALU through coordinated decoder 
 | `CLK`        | Global write clock pulse             | Manual control                     |
 | `Q[row][col]`| Stored RAM bits                      | To future read bus / MUX stage     |
 
+![RAM Diagram](8bit_ALU/64-bit_ram.png)
+
 ---
 
 ### ⚙️ Design Changes and Fixes
@@ -89,7 +91,7 @@ CLK, WE ---> AND with Y0–Y7 ---> ColumnClock[0–7]
           3-to-8 Decoder <--- PC[2:0]
 ```
 
-
+![RAM Diagram](8bit_ALU/Flip-Flop.gif)
 
 ---
 ## 🧾 Daily Log - October 23, 2025
@@ -126,6 +128,10 @@ Step	Task	Description / Result
 |  15 |       11       | ADD       |   AA  |   55  |  0  |        FF       |   0  |   ✅  |
 |  16 |       11       | ADD       |   55  |   55  |  0  |        AA       |   0  |   ✅  |
 
+![ALU Diagram](8bit_ALU/8-bit_ALU.png)
+
+![ALU Diagram](8bit_ALU/8-bit-arithemtic-logic-unit.png)
+
 ---
 ## 🧾 Daily Log - October 22, 2025
 ---
@@ -159,9 +165,14 @@ The ALU is fully functional and validated. Decoder, logic unit, and full adder a
 |    6   |       11      |  0  |  0  |  0  | 0               |   0  |    ✅   |
 |    7   |       11      |  0  |  1  |  1  | 0               |   1  |    ✅   |
 |    8   |       11      |  1  |  1  |  1  | 1               |   1  |    ✅   |
+
+<p align="center">
+  <img src="8bit_ALU/1-bit_ALU.png" width="420" style="margin-right:12px;" />
+  <img src="8bit_ALU/1-bit_ALU.gif" width="420" />
+</p>
+
+
 ---
-
-
 
 ## 🧾 Daily Log - October 21, 2025
 ---
@@ -215,3 +226,5 @@ Errors at line;
 9th output 0 cout 0.  
 11th output 0 cout 0.  
 12th output 0 cout 1.
+
+![ALU Diagram](8bit_ALU/1-bit-ALU.png)
