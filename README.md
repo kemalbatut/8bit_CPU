@@ -1,5 +1,5 @@
 
-## 🧾 Daily Log - November 8, 2025
+## 🧾 Daily Log
 ### RAM Automatic Addressing, Decoder Control, and Flip-Flop Logic Refinement
 
 **Objective**  
@@ -94,7 +94,7 @@ CLK, WE ---> AND with Y0–Y7 ---> ColumnClock[0–7]
 ![RAM Diagram](8bit_ALU/Flip-Flop.gif)
 
 ---
-## 🧾 Daily Log - October 23, 2025
+## 🧾 Daily Log
 ---
 Scale the 1-bit ALU into an 8-bit ripple-carry ALU, verify logic and arithmetic correctness, and ensure proper carry propagation across all slices.
 ---
@@ -133,7 +133,7 @@ Step	Task	Description / Result
 ![ALU Diagram](8bit_ALU/8-bit-arithemtic-logic-unit.png)
 
 ---
-## 🧾 Daily Log - October 22, 2025
+## 🧾 Daily Log
 ---
 Rebuild the ALU from scratch after design issues in the previous version.
 ---
@@ -174,7 +174,7 @@ The ALU is fully functional and validated. Decoder, logic unit, and full adder a
 
 ---
 
-## 🧾 Daily Log - October 21, 2025
+## 🧾 Daily Log
 ---
 8-bit CPU Mainboard / ALU Module Testing
 ---
