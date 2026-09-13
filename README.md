@@ -29,10 +29,7 @@ Instead of dropping in prebuilt CPU, ALU, or RAM blocks, the project deliberatel
 
 # 📸 Current Build
 
-> **Reserved for the newest full-system screenshot.**
->
-> When the new image is uploaded to GitHub, save it as:
-> `8bit_ALU/current-state.png`
+
 
 ![Current 8-Bit CPU Build](8bit_ALU/current-state.png)
 
@@ -46,12 +43,9 @@ This image is intentionally placed near the top of the README so a visitor can u
 
 # 🎬 Live Demo — ADD in Action
 
-> **Reserved for the new working-adder GIF.**
->
-> Upload the GIF as:
-> `8bit_ALU/adder-action.gif`
 
-![8-Bit CPU ADD Operation](8bit_ALU/adder-action.gif)
+
+![8-Bit CPU ADD Operation](8bit_ALU/current-state.gif)
 
 ### ➕ Demonstration: `1 + 1`
 
