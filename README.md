@@ -27,11 +27,10 @@ Instead of dropping in prebuilt CPU, ALU, or RAM blocks, the project deliberatel
 
 ---
 
+<a id="current-build"></a>
 # 📸 Current Build
-
-
-
 ![Current 8-Bit CPU Build](8bit_ALU/current-state.png)
+
 
 ### 🔎 What you are looking at
 
@@ -41,11 +40,10 @@ This image is intentionally placed near the top of the README so a visitor can u
 
 ---
 
+<a id="live-demo"></a>
 # 🎬 Live Demo — ADD in Action
-
-
-
 ![8-Bit CPU ADD Operation](8bit_ALU/current-state.gif)
+
 
 ### ➕ Demonstration: `1 + 1`
 
@@ -68,6 +66,26 @@ The interesting part is not the arithmetic itself. The GIF demonstrates a result
 
 ---
 
+
+## 🧭 Quick Navigation
+
+| Section | What It Covers |
+|---|---|
+| [📸 Current Build](#current-build) | Latest integrated CPU design |
+| [🎬 Live Demo](#live-demo) | CPU performing `1 + 1` using ADD |
+| [🧭 Complete Data Flow](#data-flow-overview) | Full input → ALU → RAM → output path |
+| [🏗️ System Architecture](#system-architecture) | Major hardware subsystems |
+| [🧠 ALU Design](#alu-design) | How the ALU was designed and scaled |
+| [🌊 Ripple-Carry Architecture](#ripple-carry) | 8-bit carry propagation |
+| [💾 RAM Architecture](#ram-architecture) | 64-bit flip-flop memory system |
+| [🧪 Verification](#verification) | Testing methodology |
+| [✅ ALU Test Results](#alu-tests) | 16/16 verification cases |
+| [🛠️ Engineering Challenges](#engineering-challenges) | Bugs, diagnosis, and fixes |
+| [🎓 What I Learned](#what-i-learned) | Main engineering lessons |
+| [⚠️ Current Limitations](#current-limitations) | What the design does not yet implement |
+| [🚀 Future Work](#future-work) | RAM redesign and possible extensions |
+
+<a id="data-flow-overview"></a>
 # 🧭 Complete System Data Flow
 
 ```text
@@ -134,6 +152,7 @@ The interesting part is not the arithmetic itself. The GIF demonstrates a result
 
 ---
 
+<a id="system-architecture"></a>
 # 🏗️ System Architecture
 
 The current system can be divided into several major subsystems:
@@ -214,6 +233,7 @@ This result is then passed into the memory stage.
 
 ---
 
+<a id="alu-design"></a>
 # 🧠 ALU Design
 
 The Arithmetic Logic Unit is the central processing component of the current architecture.
@@ -529,6 +549,7 @@ selects the arithmetic path across all eight slices.
 
 ---
 
+<a id="ripple-carry"></a>
 # 🌊 Ripple-Carry Architecture
 
 Addition requires communication between adjacent ALU slices.
@@ -627,6 +648,7 @@ This separated arithmetic state from logic-operation output.
 
 ---
 
+<a id="ram-architecture"></a>
 # 💾 RAM Architecture
 
 After completing the ALU, the next major stage was storing its output.
@@ -893,6 +915,7 @@ This provides visual feedback from the storage portion of the system and makes t
 
 ---
 
+<a id="verification"></a>
 # 🧪 Verification Strategy
 
 The project was tested incrementally.
@@ -931,6 +954,7 @@ This helped isolate failures to specific subsystems.
 
 ---
 
+<a id="alu-tests"></a>
 # ✅ 8-Bit ALU Verification
 
 The completed ALU was tested with sixteen cases covering AND, OR, NOT, ordinary addition, carry propagation, and 8-bit overflow.
@@ -1028,6 +1052,7 @@ help verify that multiple independent bit positions and carry relationships beha
 
 ---
 
+<a id="engineering-challenges"></a>
 # 🛠️ Major Engineering Challenges
 
 ## 1. Carry Chain Connected in the Wrong Direction
@@ -1311,6 +1336,7 @@ The complete circuit is stored in:
 
 ---
 
+<a id="what-i-learned"></a>
 # 🎓 What I Learned
 
 This project provided a much deeper understanding of digital systems than using a prebuilt ALU, register, or memory component would have provided.
@@ -1422,6 +1448,7 @@ For this project, understanding those mechanisms was more important than minimiz
 
 ---
 
+<a id="current-limitations"></a>
 # ⚠️ Current Limitations
 
 The current system is functional, but it should not be confused with a complete general-purpose CPU architecture.
@@ -1446,6 +1473,7 @@ Documenting these limitations is intentional. The project is an evolving hardwar
 
 ---
 
+<a id="future-work"></a>
 # 🚀 Future Work
 
 ## RAM Optimization — Highest Priority
