@@ -1587,7 +1587,7 @@ Current repository structure:
 │   ├── cpu-design-101-layers.png
 │   ├── register_file.gif
 │   ├── current-state.png        # newest full-system screenshot
-│   └── adder-action.gif         # new ADD-operation demo
+│   └── current-state.gif         # new ADD-operation demo
 │
 └── README.md
 ```
