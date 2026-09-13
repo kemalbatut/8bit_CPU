@@ -1,4 +1,4 @@
-# 🖥️ 8-Bit CPU — Built From Logic Gates Up
+# 🖥️ 8-Bit CPU - Built From Logic Gates Up
 
 > **A gate-level 8-bit digital computing system built from scratch to understand what actually happens beneath software.**
 
@@ -41,7 +41,7 @@ This image is intentionally placed near the top of the README so a visitor can u
 ---
 
 <a id="live-demo"></a>
-# 🎬 Live Demo — ADD in Action
+# 🎬 Live Demo - ADD in Action
 ![8-Bit CPU ADD Operation](8bit_ALU/current-state.gif)
 
 
@@ -1204,7 +1204,7 @@ This became one of the main lessons of the project: integration problems can be 
 
 The project evolved through multiple stages.
 
-## Stage 1 — Basic Digital Logic
+## Stage 1 - Basic Digital Logic
 
 The first step was working with fundamental gates and understanding their truth-table behavior.
 
@@ -1222,7 +1222,7 @@ These became the building blocks for every later subsystem.
 
 ---
 
-## Stage 2 — Half Adder
+## Stage 2 - Half Adder
 
 A half adder was created to add two binary inputs.
 
@@ -1237,7 +1237,7 @@ This established the foundation for binary arithmetic.
 
 ---
 
-## Stage 3 — Full Adder
+## Stage 3 - Full Adder
 
 The half-adder design was expanded into a full adder capable of accepting an incoming carry.
 
@@ -1245,7 +1245,7 @@ This made multi-bit arithmetic possible.
 
 ---
 
-## Stage 4 — 2-to-4 Decoder
+## Stage 4 - 2-to-4 Decoder
 
 A decoder was constructed to translate two control bits into four one-hot operation-selection lines.
 
@@ -1253,7 +1253,7 @@ This became the control mechanism for the ALU.
 
 ---
 
-## Stage 5 — 1-Bit ALU
+## Stage 5 - 1-Bit ALU
 
 The logic operations, arithmetic path, decoder, and output-selection network were integrated into a single reusable 1-bit processing slice.
 
@@ -1261,7 +1261,7 @@ The logic operations, arithmetic path, decoder, and output-selection network wer
 
 ---
 
-## Stage 6 — 8-Bit ALU
+## Stage 6 - 8-Bit ALU
 
 Eight 1-bit ALU slices were connected in parallel.
 
@@ -1273,7 +1273,7 @@ The arithmetic carry chain was connected from LSB to MSB.
 
 ---
 
-## Stage 7 — ALU Debugging and Verification
+## Stage 7 - ALU Debugging and Verification
 
 The 8-bit design was tested using sixteen cases.
 
@@ -1288,7 +1288,7 @@ Each issue was isolated and corrected.
 
 ---
 
-## Stage 8 — Flip-Flop Storage
+## Stage 8 - Flip-Flop Storage
 
 A D-type storage element was developed and debugged.
 
@@ -1298,7 +1298,7 @@ The flip-flop design was refined to eliminate invalid states.
 
 ---
 
-## Stage 9 — 64-Bit RAM Matrix
+## Stage 9 - 64-Bit RAM Matrix
 
 The storage cell was replicated into an 8 × 8 matrix.
 
@@ -1308,7 +1308,7 @@ This created 64 bits, or eight bytes, of storage.
 
 ---
 
-## Stage 10 — ALU-to-RAM Integration
+## Stage 10 - ALU-to-RAM Integration
 
 The eight ALU result lines were connected to the RAM input stage.
 
@@ -1316,7 +1316,7 @@ This created a direct path from computation to persistent state.
 
 ---
 
-## Stage 11 — Automatic Memory Selection
+## Stage 11 - Automatic Memory Selection
 
 Timing and decoder logic were added so that the memory selection/output process could advance automatically.
 
@@ -1324,7 +1324,7 @@ This replaced part of the earlier manual interaction with timer-driven behavior.
 
 ---
 
-## Stage 12 — Integrated Mainboard
+## Stage 12 - Integrated Mainboard
 
 The processing, storage, timing, decoder, and output subsystems were integrated into the main CPU circuit.
 
@@ -1476,7 +1476,7 @@ Documenting these limitations is intentional. The project is an evolving hardwar
 <a id="future-work"></a>
 # 🚀 Future Work
 
-## RAM Optimization — Highest Priority
+## RAM Optimization - Highest Priority
 
 The next major revision will focus on RAM.
 
@@ -1649,7 +1649,7 @@ The `8bit_ALU` directory contains development screenshots, diagrams, and GIF dem
 
 # 🚦 Project Status
 
-**Functional — Active Development**
+**Functional - Active Development**
 
 Currently implemented and tested:
 
